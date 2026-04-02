@@ -1,0 +1,12 @@
+name: 'data_platform_utils'
+version: '1.0.0'
+config-version: 2
+
+profile: 'data_platform_utils'
+
+macro-paths: ['macros']
+test-paths: ['tests']
+
+clean-targets:
+  - 'target'
+  - 'dbt_packages'

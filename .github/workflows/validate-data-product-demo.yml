@@ -1,0 +1,37 @@
+name: Validate Data Product Demo
+
+on:
+  push:
+    paths:
+      - 'data-product-demo/**'
+      - 'data-platform-utils/**'
+      - '.github/workflows/validate-data-product-demo.yml'
+  pull_request:
+    paths:
+      - 'data-product-demo/**'
+      - 'data-platform-utils/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: |
+          pip install dbt-core dbt-snowflake
+
+      - name: Install dependencies
+        working-directory: data-product-demo
+        run: dbt deps
+
+      - name: Parse data product demo
+        working-directory: data-product-demo
+        run: dbt parse

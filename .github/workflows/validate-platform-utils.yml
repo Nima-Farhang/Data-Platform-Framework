@@ -1,0 +1,31 @@
+name: Validate Platform Utils
+
+on:
+  push:
+    paths:
+      - 'data-platform-utils/**'
+      - '.github/workflows/validate-platform-utils.yml'
+  pull_request:
+    paths:
+      - 'data-platform-utils/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: |
+          pip install dbt-core dbt-snowflake
+
+      - name: Parse platform utils project
+        working-directory: data-platform-utils
+        run: dbt parse

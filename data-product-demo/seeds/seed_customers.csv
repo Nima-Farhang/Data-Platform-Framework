@@ -1,0 +1,4 @@
+customer_id,customer_name,email_address,phone_number,customer_status,created_at,updated_at
+1,Alice Smith,alice@example.com,0211111111,active,2026-01-01 09:00:00,2026-03-01 10:00:00
+2,Bob Jones,bob@example.com,0212222222,active,2026-01-05 10:00:00,2026-03-02 11:00:00
+3,Carol White,carol@example.com,0213333333,inactive,2026-01-08 11:00:00,2026-03-03 12:00:00
